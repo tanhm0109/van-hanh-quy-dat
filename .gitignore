@@ -1,0 +1,12 @@
+# Hồ sơ vụ việc thực tế — có thể chứa dữ liệu cá nhân, không commit mặc định.
+# Muốn commit một hồ sơ cụ thể: git add -f ho-so/<đường-dẫn>
+ho-so/*
+!ho-so/README.md
+
+# File tạm của Office / hệ thống
+~$*
+.~lock.*
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
