@@ -2,7 +2,7 @@
 
 ## Dự án chuẩn hóa quy trình và triển khai công cụ hỗ trợ — Quỹ phát triển đất Nghệ An
 
-Kèm theo: `de-xuat-du-an-quy-trinh-va-cong-cu-v1.md`
+Kèm theo: `de-xuat-du-an-quy-trinh-va-cong-cu-v2.md`
 
 **Cách sử dụng tài liệu:**
 - Mỗi câu hỏi ghi rõ **người nên trả lời** và **câu trả lời ảnh hưởng đến quyết định gì**.
@@ -109,6 +109,11 @@ Kèm theo: `de-xuat-du-an-quy-trinh-va-cong-cu-v1.md`
 | 5.7 | Cán bộ dùng máy tính cá nhân hay máy cơ quan? Hệ điều hành gì? Có được tự cài phần mềm không? | Cài đặt công cụ cho đầu mối | |
 | 5.8 | Quỹ đang dùng email công vụ của tỉnh hay email khác? Có dùng Microsoft 365 / Google Workspace không? | Kênh thông báo, nhắc việc | |
 | 5.9 | Phần mềm kế toán đang dùng là gì? Có xuất được số liệu không? | Đối chiếu số liệu vốn ứng | |
+| 5.10 ⭐ | Quỹ đang dùng **phiên bản iOffice nào** (4.x hay 5.0)? Nghệ An có lộ trình nâng cấp lên 5.0 không, khi nào, có phát sinh chi phí cho Quỹ không? | Có dùng được ChatBot tra cứu, OCR hay không | |
+| 5.11 | "Hồ sơ công việc" trên iOffice có **chia sẻ được giữa nhiều người, nhiều phòng** không? | Gom văn bản theo mã hồ sơ ngay trên iOffice | |
+| 5.12 | Phân hệ quản lý công việc có hỗ trợ giao việc nhiều bước, **việc lặp lại định kỳ**, checklist không? | Thu hẹp phạm vi hệ thống theo dõi riêng | |
+| 5.13 | Quỹ có đang nhận nhiệm vụ của UBND tỉnh qua **phân hệ Chỉ đạo điều hành** không? | Nguồn nhiệm vụ, hạn hoàn thành | |
+| 5.14 | ChatBot AI và OCR (bản 5.0) xử lý dữ liệu ở đâu: máy chủ VNPT trong nước hay dịch vụ bên ngoài? | Đánh giá bảo mật | |
 
 ## PHẦN 6. DỮ LIỆU, BẢO MẬT VÀ SỬ DỤNG AI (Ban Giám đốc quyết định)
 

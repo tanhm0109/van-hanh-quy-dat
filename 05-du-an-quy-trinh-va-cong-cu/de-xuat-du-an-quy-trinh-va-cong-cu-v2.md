@@ -6,8 +6,8 @@
 |---|---|
 | **Kính gửi** | Ban Giám đốc Quỹ phát triển đất Nghệ An |
 | **Đơn vị/người đề xuất** | `[Tên đơn vị / cá nhân đề xuất]` |
-| **Phiên bản** | v1 — dự thảo để trao đổi, ngày ___/___/2026 |
-| **Tài liệu kèm theo** | Bộ câu hỏi trao đổi, khảo sát (`cau-hoi-trao-doi-khao-sat-v1.md`) |
+| **Phiên bản** | v2 — dự thảo để trao đổi, ngày ___/___/2026. Bổ sung so với v1: các phương án triển khai theo bậc, ưu tiên phương án đơn giản, ít chi phí (mục 5.5) |
+| **Tài liệu kèm theo** | Bộ câu hỏi trao đổi, khảo sát (`cau-hoi-trao-doi-khao-sat-v1.md`); Đánh giá tính năng iOffice (`danh-gia-tinh-nang-ioffice-v1.md`) |
 
 ---
 
@@ -79,6 +79,8 @@ Chuẩn hóa quy trình cho 13 đầu việc và triển khai bộ công cụ h�
 
 ### 5.1. Mô hình tổng thể: 3 lớp
 
+> Đây là **mô hình đích**, không phải việc phải làm ngay. Quỹ triển khai dần theo các bậc ở mục 5.5. Phần lớn nhu cầu có thể được giải quyết ở các bậc đầu mà chưa cần máy chủ hay phần mềm mới.
+
 ```
 ┌───────────────────────────────────────────────────────────────┐
 │ LỚP 1 — iOffice (VNPT)                                        │
@@ -134,14 +136,153 @@ Văn bản đề nghị đến qua iOffice
   → Cập nhật số Quyết định → hệ thống tự theo dõi hạn hoàn trả, tuổi nợ
 ```
 
+### 5.5. Các phương án triển khai theo bậc
+
+**Nguyên tắc:**
+- Làm từ **đơn giản, ít tốn kém** đến phức tạp.
+- Bậc sau xây trên kết quả của bậc trước, không bỏ đi việc đã làm.
+- **Chỉ lên bậc khi bậc hiện tại không còn đáp ứng**, theo tiêu chí chuyển bậc tại mục 5.5.3.
+
+#### 5.5.1. Mô tả các phương án
+
+**Phương án 0 — Chuẩn hóa quy trình và khai thác hết iOffice.** Không mua sắm, không thêm công nghệ.
+- Ban hành sổ tay quy trình, checklist, biểu mẫu cho 13 đầu việc. Sổ tay ở dạng file Word/PDF, lưu ở thư mục dùng chung và đính kèm trên iOffice.
+- Thống nhất cách dùng iOffice:
+  - mỗi hồ sơ nghiệp vụ có một "Hồ sơ công việc" đặt tên theo mã thống nhất, ví dụ `UV-2026-001`;
+  - văn bản quan trọng được đưa vào "Văn bản theo dõi", ghi đủ hạn xử lý;
+  - dùng lịch công tác hoặc phân hệ công việc (nếu có) để nhắc các mốc định kỳ, ví dụ báo cáo tháng, quý và Báo cáo viên ngày 25.
+- Ban hành bảng phân công chủ trì, phối hợp, phê duyệt cho từng đầu việc.
+- **Giải quyết:** quy trình chưa thống nhất; gom văn bản theo hồ sơ; nhắc hạn.
+
+**Phương án 1 — Thêm sổ theo dõi bằng Excel dùng chung.** Dùng phần mềm văn phòng sẵn có.
+- Lập 3 sổ Excel mẫu, có công thức tính sẵn và khóa các ô công thức:
+  1. **Sổ theo dõi hồ sơ:** mỗi dòng một hồ sơ, gồm mã hồ sơ, bước hiện tại, người đang xử lý, hạn, số văn bản iOffice liên quan;
+  2. **Sổ theo dõi vốn ứng:** khoản ứng, số tiền, ngày ứng, hạn hoàn trả, đã thu; công thức tự tính tuổi nợ và phân loại trong hạn/quá hạn;
+  3. **Lịch việc định kỳ:** báo cáo, người phụ trách, hạn, tình trạng.
+- Lưu trên **thư mục dùng chung trong mạng nội bộ**, dùng tính năng chia sẻ thư mục có sẵn của Windows trên một máy cơ quan.
+- Quy tắc vận hành:
+  - **mỗi sổ có một người chủ sổ** được quyền sửa, người khác chỉ xem;
+  - các phòng gửi số liệu cho chủ sổ theo mẫu;
+  - sao lưu hằng tuần ra ổ cứng rời.
+- **Giải quyết thêm:** số liệu vốn ứng có một nguồn duy nhất; biết hồ sơ đang ở bước nào; báo cáo định kỳ lấy số từ sổ thay vì đi hỏi từng phòng.
+
+**Phương án 2 — Thêm trợ lý AI cho 1–2 đầu mối.** Không cần máy chủ.
+- Cài Claude Code trên máy của 1–2 đầu mối, ví dụ Phòng Nghiệp vụ và Phòng HC-TH.
+- Trợ lý đọc sổ tay quy trình và sổ Excel (chỉ phần dữ liệu được phép), rồi:
+  - rà checklist hồ sơ;
+  - dựng dự thảo báo cáo thẩm định, tờ trình, báo cáo định kỳ, công văn đôn đốc;
+  - xuất file Word để đưa lên iOffice trình ký.
+- Số liệu như tuổi nợ, tổng hợp kỳ được **tính bằng công thức Excel hoặc chương trình nhỏ chạy trên máy**, trợ lý không tự tính.
+- **Điều kiện bắt buộc:** Ban Giám đốc chấp thuận phạm vi dữ liệu (câu hỏi 6.1). Dữ liệu NOXH có thông tin cá nhân và dữ liệu Đảng **không** dùng ở phương án này.
+- **Giải quyết thêm:** giảm thời gian soạn thảo các văn bản lặp lại.
+
+**Phương án 3 — Máy chủ nhỏ nội bộ.** Chỉ triển khai khi sổ Excel không còn đáp ứng.
+- Một máy tính để bàn hoặc thiết bị lưu trữ mạng chạy liên tục tại Quỹ, đặt cơ sở dữ liệu thay cho các sổ Excel.
+- Có màn hình nhập liệu đơn giản, phân quyền theo phòng và nhật ký thao tác.
+- Trợ lý AI kết nối dữ liệu dùng chung qua bộ kết nối (MCP) theo đúng quyền của từng người. Dữ liệu NOXH được che danh tính.
+- **Giải quyết thêm:** nhiều người cùng cập nhật không bị ghi đè; phân quyền; truy vết.
+
+**Phương án 4 — Kết nối iOffice, mở rộng toàn Quỹ.** Phụ thuộc VNPT.
+- Tự động lấy danh sách văn bản đến và hạn xử lý từ iOffice qua API hoặc LGSP (nếu VNPT hỗ trợ).
+- Mở màn hình nhập liệu cho toàn bộ chuyên viên. Mở rộng sang nhóm II (NOXH).
+
+#### 5.5.2. So sánh các phương án
+
+| Tiêu chí | PA 0 | PA 1 | PA 2 | PA 3 | PA 4 |
+|---|---|---|---|---|---|
+| Chi phí mua sắm | Không | Không (dùng Office sẵn có); ổ cứng sao lưu nếu chưa có | Thuê bao trợ lý AI cho 1–2 tài khoản `[…]` | Thiết bị máy chủ `[…]` và công xây dựng `[…]` | Phí kết nối của VNPT (nếu có) `[…]` và công xây dựng `[…]` |
+| Công nghệ mới phải học | Không | Không | Trợ lý AI (chỉ đầu mối) | Máy chủ, cơ sở dữ liệu (người quản trị) | Kết nối hệ thống |
+| Thủ tục mua sắm | Không | Không hoặc rất nhỏ | Có (thuê dịch vụ) | Có | Có |
+| Thời gian bắt đầu được | Ngay | Ngay | Sau khi có chấp thuận 6.1 và thủ tục mua | Sau khảo sát, có dự toán | Sau khi VNPT xác nhận |
+| Cần người kỹ thuật | Không | Không | Không (có hướng dẫn) | Có (kiêm nhiệm hoặc thuê) | Có, kèm VNPT |
+| Quy trình thống nhất | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Gom văn bản theo hồ sơ | ✅ (trên iOffice) | ✅ | ✅ | ✅ | ✅ |
+| Biết hồ sơ ở bước nào | ❌ | ✅ (thủ công) | ✅ (thủ công) | ✅ | ✅ (một phần tự động) |
+| Số liệu vốn ứng tập trung | ❌ | ✅ | ✅ | ✅ | ✅ |
+| Giảm thời gian soạn thảo | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Nhiều người cùng cập nhật an toàn | — | ⚠️ một người chủ sổ | ⚠️ một người chủ sổ | ✅ | ✅ |
+| Phân quyền chi tiết, nhật ký | — | ❌ | ❌ | ✅ | ✅ |
+| Rủi ro chính | Quy trình ban hành nhưng không được áp dụng | Ghi đè file, mất dữ liệu nếu không sao lưu | Dữ liệu gửi ra nước ngoài; dự thảo sai nếu không kiểm tra | Phụ thuộc người quản trị | Phụ thuộc nhà cung cấp |
+
+#### 5.5.3. Tiêu chí chuyển bậc
+
+| Chuyển | Khi nào nên chuyển |
+|---|---|
+| PA 0 → PA 1 | Ngay sau khi ban hành quy trình. PA 1 gần như không tốn chi phí và giải quyết vấn đề số liệu phân tán |
+| PA 1 → PA 2 | Đã có chấp thuận phạm vi dữ liệu (câu 6.1); sổ Excel đã được cập nhật đều; khối lượng soạn thảo lặp lại còn lớn |
+| PA 2 → PA 3 | Có **từ hai dấu hiệu trở lên**: nhiều người cần cùng sửa một sổ và thường xảy ra ghi đè, lệch số; cần phân quyền theo phòng; cần nhật ký truy vết; số hồ sơ, khoản ứng vượt mức quản lý được bằng Excel (ngưỡng cụ thể `[…]`, chốt sau thí điểm) |
+| PA 3 → PA 4 | VNPT xác nhận bằng văn bản có API hoặc kết nối LGSP, với chi phí và thủ tục chấp nhận được |
+
+#### 5.5.4. Phương án đề xuất lựa chọn: PA 0 + PA 1 + PA 2
+
+Gọi tắt là phương án **"iOffice + file văn phòng + trợ lý Claude Code"**.
+
+1. **Triển khai ngay PA 0 và PA 1.** Không cần mua sắm, không phát sinh công nghệ, mà đã giải quyết được phần lớn khoảng trống nêu tại mục 1 (quy trình, gom hồ sơ, số liệu tập trung, nhắc hạn).
+2. **Thí điểm PA 2 ở 1 đầu mối** trong 1–2 tháng nếu Ban Giám đốc chấp thuận phạm vi dữ liệu. Trợ lý xử lý trực tiếp trên file Excel, Word, PDF của Quỹ (mục 5.6). Đo thời gian lập báo cáo trước và sau để quyết định có nhân rộng không.
+3. **PA 3 và PA 4 chưa đưa vào kế hoạch kinh phí năm đầu.** Chỉ đề xuất khi đạt tiêu chí chuyển bậc, có số liệu thí điểm làm căn cứ.
+
+### 5.6. Mô hình làm việc của phương án được chọn
+
+#### 5.6.1. Trợ lý làm gì với file
+
+| Việc | Đầu vào | Trợ lý thực hiện | Đầu ra |
+|---|---|---|---|
+| Cập nhật sổ theo dõi | Chứng từ (ủy nhiệm chi, giấy nộp tiền, QĐ, phụ lục hợp đồng) dạng PDF, Word, ảnh hoặc nội dung gõ vào | Đọc chứng từ, trích số liệu, **trình bảng thay đổi để chuyên viên xác nhận**, rồi mới ghi vào sổ Excel | Sổ Excel đã cập nhật; bản sao lưu; dòng nhật ký ghi rõ chứng từ |
+| Tính tuổi nợ, phân loại nợ | Sổ theo dõi vốn ứng, mốc chốt số liệu | Chạy công cụ tính (chương trình nhỏ, không phải AI tự tính), kiểm tra dữ liệu bất thường | Bảng tuổi nợ (Excel); danh sách khoản sắp đến hạn, quá hạn; cảnh báo dữ liệu |
+| Dựng văn bản | Kết quả tính, biểu mẫu, checklist, văn bản đến từ iOffice (bản tải về) | Dựng dự thảo theo biểu mẫu của Quỹ, chừa trống thông tin còn thiếu | Dự thảo Word (chỗ trống tô vàng), PDF nếu cần |
+| Báo cáo định kỳ, đột xuất | Các sổ theo dõi, biểu số liệu các phòng gửi (Excel), đề cương của Sở, ngành | Tổng hợp số liệu, đối chiếu giữa các nguồn, dựng báo cáo theo đề cương | Báo cáo Word kèm biểu Excel |
+| Rà soát hồ sơ | Hồ sơ đề nghị (PDF, Word) | Đối chiếu checklist pháp lý, liệt kê giấy tờ thiếu | Phiếu rà soát checklist |
+
+#### 5.6.2. Quy trình một vòng làm việc
+
+```
+iOffice ──tải văn bản/chứng từ về──► Thư mục hồ sơ trên máy đầu mối
+                                       │
+                         Chuyên viên gọi lệnh trợ lý
+                         (/cap-nhat-so-von-ung, /theo-doi-no-von-ung, /xuat-van-ban…)
+                                       │
+                  ┌────────────────────┼─────────────────────┐
+                  ▼                    ▼                     ▼
+          Sổ Excel cập nhật     Bảng tính tuổi nợ      Dự thảo Word/PDF
+          (sao lưu + nhật ký)   (Excel)                (chỗ trống tô vàng)
+                                       │
+                         Chuyên viên kiểm tra, hoàn thiện
+                                       │
+iOffice ◄──────── trình ký, ký số, phát hành ─────────┘
+```
+
+#### 5.6.3. Kiểm soát
+
+- **Số liệu do chương trình tính** theo quy tắc cố định (ví dụ khung phân nhóm nợ A–F). Trợ lý AI không tự cộng trừ. Khi Quỹ ban hành quy chế phân loại nợ chính thức, chỉ cần sửa một chỗ.
+- **Không ghi vào sổ khi chưa được xác nhận.** Mỗi lần ghi bắt buộc có số hiệu chứng từ, tự sao lưu và ghi nhật ký. Nếu file đang có người mở trên Excel thì công cụ dừng lại, tránh ghi đè.
+- **Mỗi sổ một người chủ sổ.** Sổ đặt trên thư mục dùng chung; người khác chỉ xem.
+- **Văn bản xuất ra luôn là dự thảo.** Việc ký và phát hành vẫn đi trên iOffice.
+- **Phạm vi dữ liệu theo mục 4.5.** Không dùng trợ lý với hồ sơ NOXH có thông tin cá nhân và tài liệu Đảng.
+
+#### 5.6.4. Hiện trạng chuẩn bị
+
+Đã có bản chạy thử cho đầu việc I.3 (theo dõi thu hồi vốn ứng):
+- sổ theo dõi vốn ứng mẫu dạng Excel;
+- công cụ cập nhật sổ có nhật ký;
+- công cụ tính tuổi nợ, xuất bảng tổng hợp;
+- công cụ xuất văn bản Word/PDF.
+
+Các công cụ này đã được kiểm tra trên dữ liệu giả lập. Sau khảo sát sẽ điều chỉnh theo sổ sách thực tế của Quỹ, rồi mở rộng sang báo cáo định kỳ (III.3) và thẩm định ứng vốn (I.2).
+
+**Yêu cầu máy tính đầu mối:**
+- Windows hoặc macOS, có Internet;
+- Python (miễn phí);
+- LibreOffice (miễn phí, chỉ cần khi muốn xuất PDF tự động);
+- tài khoản trợ lý Claude.
+
 ## 6. Nội dung công việc và sản phẩm bàn giao
 
 | Giai đoạn | Nội dung | Sản phẩm |
 |---|---|---|
 | **0. Khảo sát** | Làm việc với Ban Giám đốc và các phòng; khảo sát iOffice, hạ tầng CNTT; thu thập biểu mẫu, quy chế hiện hành; đo hiện trạng các chỉ số tại mục 2.2 | Báo cáo khảo sát hiện trạng; danh mục yêu cầu đã thống nhất |
 | **1. Chuẩn hóa quy trình** | Hoàn thiện quy trình, checklist, biểu mẫu cho 13 đầu việc; phân công chủ trì, phối hợp, phê duyệt | Bộ quy trình trình Giám đốc ban hành; ma trận phân công |
-| **2. Thí điểm** | Dựng hệ thống theo dõi cho nhóm I và đầu việc III.3; đào tạo đầu mối; chạy song song với cách làm cũ | Hệ thống thí điểm; tài liệu hướng dẫn; báo cáo đánh giá thí điểm |
-| **3. Mở rộng** | Mở rộng sang nhóm II (có che dữ liệu), III.2 và III.4; màn hình nhập liệu cho chuyên viên; kết nối iOffice | Hệ thống đầy đủ; báo cáo nghiệm thu |
+| **2. Thí điểm (PA 0, PA 1, PA 2)** | Áp dụng quy ước dùng iOffice; đưa vào sử dụng 3 sổ Excel dùng chung cho nhóm I và đầu việc III.3; thí điểm trợ lý AI ở 1 đầu mối (nếu được chấp thuận); đào tạo; chạy song song với cách làm cũ | Quy ước dùng iOffice; bộ sổ Excel mẫu; tài liệu hướng dẫn; báo cáo đánh giá thí điểm kèm đề xuất có lên bậc hay không |
+| **3. Mở rộng (PA 3, PA 4, chỉ khi đạt tiêu chí mục 5.5.3)** | Máy chủ nội bộ thay sổ Excel; mở rộng sang nhóm II (có che dữ liệu), III.2 và III.4; kết nối iOffice | Hệ thống đầy đủ; báo cáo nghiệm thu |
 | **4. Chuẩn hóa vận hành** | Dự thảo Quy chế sử dụng hệ thống và bảo vệ dữ liệu; bàn giao quản trị | Quy chế; hồ sơ bàn giao; kế hoạch duy trì |
 
 **Thời gian dự kiến:** `[…]` tháng. Sẽ chốt sau giai đoạn khảo sát, tùy thuộc hạ tầng và phản hồi của VNPT.
@@ -158,15 +299,17 @@ Văn bản đề nghị đến qua iOffice
 
 ## 8. Kinh phí dự kiến
 
-Chưa đủ cơ sở để lập dự toán. Các khoản sau sẽ được lượng hóa sau khảo sát:
+Chưa đủ cơ sở để lập dự toán. Kinh phí được tách theo phương án để Quỹ chỉ chi khi cần lên bậc. Các khoản sẽ được lượng hóa sau khảo sát.
 
-| Khoản mục | Ghi chú |
-|---|---|
-| Hạ tầng máy chủ (tận dụng hiện có hoặc thuê máy chủ ảo trong nước) | `[…]` |
-| Thuê bao công cụ AI cho các đầu mối (gói dành cho tổ chức) | `[…]` |
-| Công khảo sát, xây dựng, đào tạo | `[…]` |
-| Chi phí kết nối iOffice (nếu VNPT tính phí) | `[…]` |
-| Duy trì, vận hành hằng năm | `[…]` |
+| Khoản mục | Phương án | Ghi chú |
+|---|---|---|
+| Công khảo sát, chuẩn hóa quy trình, lập sổ Excel mẫu, đào tạo | PA 0, PA 1 | `[…]`; tùy hình thức hợp tác (câu hỏi 7.1) |
+| Ổ cứng rời để sao lưu (nếu chưa có) | PA 1 | `[…]` |
+| Thuê bao trợ lý AI cho 1–2 đầu mối (gói dành cho tổ chức) | PA 2 | `[…]` |
+| Thiết bị máy chủ nội bộ, hoặc thuê máy chủ ảo trong nước | PA 3 | `[…]`; chưa đưa vào năm đầu |
+| Công xây dựng cơ sở dữ liệu, màn hình nhập liệu, bộ kết nối | PA 3 | `[…]`; chưa đưa vào năm đầu |
+| Chi phí kết nối iOffice (nếu VNPT tính phí) | PA 4 | `[…]`; chưa đưa vào năm đầu |
+| Duy trì, vận hành hằng năm | PA 2 trở lên | `[…]` |
 
 Việc mua sắm hoặc thuê dịch vụ sẽ thực hiện theo trình tự chủ trương → dự toán → kế hoạch lựa chọn nhà thầu (KHLCNT) → hợp đồng → nghiệm thu → thanh quyết toán, phù hợp quy định về đấu thầu và tài sản công.
 
@@ -186,10 +329,10 @@ Việc mua sắm hoặc thuê dịch vụ sẽ thực hiện theo trình tự ch
 
 Kính đề nghị Ban Giám đốc Quỹ:
 
-1. **Đồng ý chủ trương** triển khai giai đoạn 0 (khảo sát) và giai đoạn 1 (chuẩn hóa quy trình).
+1. **Đồng ý chủ trương** triển khai giai đoạn 0 (khảo sát), giai đoạn 1 (chuẩn hóa quy trình), và áp dụng **Phương án 0 và Phương án 1** (mục 5.5). Hai phương án này không phát sinh mua sắm, không phát sinh công nghệ mới.
 2. **Bố trí buổi làm việc** với Ban Giám đốc và các phòng để trao đổi theo bộ câu hỏi kèm theo. Thời gian đề nghị: `[…]`.
 3. **Cử Tổ triển khai** và đầu mối liên hệ của từng phòng.
-4. **Cho ý kiến về phạm vi dữ liệu** được phép sử dụng với công cụ AI (mục 4.5), làm cơ sở cho các giai đoạn sau.
+4. **Cho ý kiến về phạm vi dữ liệu** được phép sử dụng với công cụ AI (mục 4.5), làm cơ sở để quyết định thí điểm Phương án 2.
 
 ---
 
@@ -213,7 +356,8 @@ Bản khung đã dựng trong không gian làm việc gồm:
 - checklist, biểu mẫu;
 - lịch công việc định kỳ;
 - quy ước soạn thảo văn bản;
-- 6 lệnh trợ lý cho các đầu việc thường dùng: thẩm định ứng vốn, theo dõi nợ, báo cáo định kỳ, báo cáo đột xuất, sinh hoạt Chi bộ, Báo cáo viên.
+- 8 lệnh trợ lý cho các đầu việc thường dùng: thẩm định ứng vốn, theo dõi nợ, báo cáo định kỳ, báo cáo đột xuất, sinh hoạt Chi bộ, Báo cáo viên, cập nhật sổ vốn ứng, xuất văn bản Word/PDF;
+- bộ công cụ xử lý file: sổ vốn ứng Excel mẫu, cập nhật sổ có nhật ký, tính tuổi nợ, xuất Word/PDF (mục 5.6.4).
 
 Bản khung này là **điểm xuất phát để Quỹ góp ý**, chưa phải quy trình chính thức.
 
@@ -228,6 +372,8 @@ Bản khung này là **điểm xuất phát để Quỹ góp ý**, chưa phải 
 5. Các chức năng iOffice đang dùng và khả năng kết nối, xuất dữ liệu (cần VNPT xác nhận).
 6. Hạ tầng CNTT hiện có của Quỹ.
 7. Ý kiến của Ban Giám đốc về phạm vi dữ liệu được dùng với công cụ AI.
+8. Ngưỡng định lượng để chuyển từ sổ Excel lên máy chủ nội bộ (mục 5.5.3), chốt sau thí điểm.
+9. Quỹ đã có bản quyền Microsoft Office và một máy tính có thể chia sẻ thư mục trong mạng nội bộ chưa (điều kiện của PA 1).
 
 ## CĂN CỨ PHÁP LÝ CẦN ĐỐI CHIẾU HIỆU LỰC
 
