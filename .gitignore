@@ -10,3 +10,8 @@ ho-so/*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Môi trường Python và bản sao lưu tự động của công cụ
+.venv/
+__pycache__/
+sao-luu/

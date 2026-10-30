@@ -16,8 +16,11 @@ hoàn trả vốn ứng của tỉnh; `00-tai-lieu-chung/can-cu-phap-ly.md` mụ
 - [ ] Hợp đồng ứng vốn (để đối chiếu mốc hoàn trả)
 
 ## Công cụ theo dõi
-`bieu-mau/01-nghiep-vu-von-ung/bang-theo-doi-von-ung.csv` — mỗi khoản ứng một
-dòng, cập nhật tối thiểu **hằng tháng**.
+Sổ Excel `bieu-mau/01-nghiep-vu-von-ung/so-theo-doi-von-ung.xlsx` (bản trống —
+copy sang `ho-so/` để dùng thật) — mỗi khoản ứng một dòng, cập nhật tối thiểu
+**hằng tháng**. Cập nhật và tính tuổi nợ bằng công cụ trong `cong-cu/`
+(`/cap-nhat-so-von-ung`, `/theo-doi-no-von-ung`): mọi thay đổi có sao lưu và
+nhật ký kèm chứng từ. Bản `.csv` cũ vẫn đọc được.
 
 Trường dữ liệu: mã hồ sơ · đơn vị nhận vốn · dự án · số QĐ ứng vốn · số hợp
 đồng · số tiền ứng · đã giải ngân · đã thu hồi · dư nợ · hạn hoàn trả theo hợp

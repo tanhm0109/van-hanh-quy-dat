@@ -4,22 +4,29 @@ description: Rà soát tuổi nợ, phân loại nợ vốn ứng và dựng cô
 
 Thực hiện đầu việc **I.3 — Theo dõi, đôn đốc thu hồi vốn ứng**.
 
-Yêu cầu / file số liệu: $ARGUMENTS
+Yêu cầu / file sổ / mốc chốt: $ARGUMENTS
 
 Trình tự:
 
-1. Đọc `01-nghiep-vu-quy-phat-trien-dat/03-theo-doi-thu-hoi-von-ung/README.md`.
-2. Đọc file theo dõi vốn ứng (mặc định
-   `bieu-mau/01-nghiep-vu-von-ung/bang-theo-doi-von-ung.csv`, hoặc file người
-   dùng chỉ ra). Nêu rõ **mốc chốt số liệu** đang dùng.
-3. Tính số ngày quá hạn cho từng khoản so với `han_hoan_tra`, phân nhóm nợ
-   A–F theo khung trong README. Nếu thiếu `han_hoan_tra` → báo thiếu, không tự suy luận.
-4. Lập bảng tổng hợp: số khoản và dư nợ theo từng nhóm; danh sách khoản
-   **sắp đến hạn (≤ 90 ngày)** và danh sách khoản **quá hạn**.
-5. Dựng công văn đôn đốc cho từng khoản nhóm C trở lên, theo
-   `bieu-mau/01-nghiep-vu-von-ung/mau-cong-van-don-doc-thu-hoi.md`.
-   Với nhóm D trở lên, thêm đoạn cảnh báo báo cáo HĐQL Quỹ và UBND tỉnh.
-6. Nêu các khoản cần ưu tiên kiểm tra hiện trường trong kỳ.
-7. Kết thúc bằng danh sách việc cần làm, kèm hạn.
+1. Đọc `01-nghiep-vu-quy-phat-trien-dat/03-theo-doi-thu-hoi-von-ung/README.md`
+   và `cong-cu/README.md`.
+2. Xác định **file sổ** (sổ thật trong `ho-so/`, dạng .xlsx hoặc .csv) và **mốc
+   chốt số liệu**. Thiếu một trong hai → hỏi người dùng, không tự chọn.
+3. Chạy công cụ tính (Python trong `.venv`):
+   `python cong-cu/tuoi_no.py <sổ> --ngay-chot <dd/mm/yyyy> --xuat ho-so/<năm>/BC-.../bang-tuoi-no-<ngày>.xlsx`
+   Chỉ thêm `--ghi-vao-so --nguoi "<tên>"` khi người dùng yêu cầu cập nhật sổ.
+4. **Dùng nguyên số liệu trong kết quả JSON của công cụ** — không tự cộng trừ,
+   không làm tròn khác đi. Nếu có `canh_bao` → nêu đầu tiên, đề nghị người
+   dùng kiểm tra chứng từ/đối chiếu kế toán trước khi dùng số liệu.
+5. Trình bày: bảng tổng hợp theo nhóm A–F, **cộng trong hạn và cộng quá hạn tách
+   riêng**; danh sách sắp đến hạn (nhóm B); danh sách quá hạn (C–F).
+6. Dựng công văn đôn đốc cho từng khoản nhóm C trở lên theo
+   `bieu-mau/01-nghiep-vu-von-ung/mau-cong-van-don-doc-thu-hoi.md` (nhóm D trở
+   lên thêm đoạn cảnh báo báo cáo HĐQL Quỹ và UBND tỉnh), lưu `.md` vào thư mục
+   hồ sơ của khoản đó. Thông tin không có trong sổ (số TK, công văn trước…) để `{{…}}`.
+7. Xuất Word (và PDF nếu người dùng cần):
+   `python cong-cu/xuat_van_ban.py <file.md> [--pdf]`.
+8. Nêu các khoản cần ưu tiên kiểm tra hiện trường trong kỳ.
+9. Kết thúc bằng danh sách việc cần làm, kèm hạn, và đường dẫn các file đã tạo.
 
-Không điều chỉnh số liệu trong file theo dõi nếu người dùng không yêu cầu.
+Không sửa số liệu trong sổ nếu người dùng không yêu cầu; muốn sửa dùng `/cap-nhat-so-von-ung`.

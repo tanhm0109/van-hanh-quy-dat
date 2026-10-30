@@ -60,7 +60,9 @@ README.md                        — giới thiệu & cách dùng
   quy-uoc-van-ban.md             — thể thức, cách đặt tên file, số văn bản
   Bang-cac-dau-cong-viec-Quy.xlsx — file gốc do đơn vị cung cấp
 01..04-<nhóm việc>/<đầu việc>/README.md   — quy trình từng đầu việc
+05-du-an-quy-trinh-va-cong-cu/   — hồ sơ dự án chuẩn hoá quy trình & công cụ
 bieu-mau/                        — biểu mẫu, checklist, bảng theo dõi
+cong-cu/                         — script đọc/ghi Excel, tính tuổi nợ, xuất Word/PDF
 ho-so/                           — hồ sơ vụ việc thực tế (theo năm/mã hồ sơ)
 .claude/commands/                — slash command cho các đầu việc hay dùng
 ```
@@ -88,6 +90,15 @@ Trình tự xử lý mặc định:
    ứng, theo biểu mẫu trong `bieu-mau/`.
 5. Kết thúc bằng: danh sách việc người dùng cần làm tiếp (lấy thêm hồ sơ gì,
    trình ai, hạn nào).
+
+## 5a. Làm việc với file Excel / Word / PDF
+
+- Số liệu (dư nợ, tuổi nợ, nhóm nợ, tổng hợp) **lấy từ kết quả script trong
+  `cong-cu/`**, không tự tính nhẩm. Chạy script bằng Python trong `.venv`.
+- Ghi vào sổ Excel chỉ qua `cong-cu/cap_nhat_so.py` / `tuoi_no.py --ghi-vao-so`
+  (có sao lưu + nhật ký), và **chỉ sau khi người dùng xác nhận** bảng thay đổi.
+- Văn bản: soạn `.md` theo biểu mẫu → xuất bằng `cong-cu/xuat_van_ban.py`
+  (Word, `--pdf` nếu cần). Không phát hành — người dùng trình ký trên iOffice.
 
 ## 6. Lưu ý chuyên môn thường gặp
 

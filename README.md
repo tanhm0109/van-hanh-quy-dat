@@ -38,6 +38,11 @@ Lệnh có sẵn (gõ `/` trong Claude Code):
 | `/bao-cao-dot-xuat` | Xử lý văn bản yêu cầu báo cáo của Sở, Ngành (III.4) |
 | `/sinh-hoat-chi-bo` | Chuẩn bị nghị quyết, biên bản sinh hoạt Chi bộ (IV.1) |
 | `/bao-cao-vien` | Dựng Báo cáo viên tháng — hạn ngày 25 (IV.2) |
+| `/cap-nhat-so-von-ung` | Cập nhật sổ vốn ứng Excel từ chứng từ, có sao lưu và nhật ký (I.3) |
+| `/xuat-van-ban` | Xuất dự thảo ra Word theo thể thức, kèm PDF nếu cần |
+
+Các lệnh trên dùng công cụ trong [`cong-cu/`](cong-cu/) để đọc/ghi Excel và xuất
+Word/PDF — xem hướng dẫn cài đặt tại [`cong-cu/README.md`](cong-cu/README.md).
 
 Ví dụ cách yêu cầu trực tiếp:
 - "Thẩm định hồ sơ ứng vốn của Ban QLDA huyện X, hồ sơ đính kèm."
